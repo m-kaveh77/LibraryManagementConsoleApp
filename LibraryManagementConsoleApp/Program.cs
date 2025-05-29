@@ -239,7 +239,13 @@ while (true)
         case "6":
             break;
         case "7":
-            break;
+            {
+                Console.Clear();
+                Console.WriteLine("Good Luck! Bye");
+                Console.WriteLine("-----------------------------------------------------------");
+                
+                return;
+            }
         default:
             Console.WriteLine("Your option is invalid...");
             Console.Write("Press any key back to options...");
