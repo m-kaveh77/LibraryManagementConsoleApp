@@ -113,7 +113,7 @@ while (true)
             break;
         default:
             Console.WriteLine("Your option is invalid...");
-            Console.WriteLine("Press any key back to options...");
+            Console.Write("Press any key back to options...");
             Console.ReadKey();
             break;
     }
