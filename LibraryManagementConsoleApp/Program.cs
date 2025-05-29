@@ -32,7 +32,33 @@ while (true)
         case "1":
             break;
         case "2":
-            break;
+            {
+                Console.Clear();
+                Console.WriteLine("Book list: ");
+                Console.WriteLine("-----------------------------------------------------------");
+                Console.WriteLine();
+
+                if (books.Count > 0)
+                {
+                    foreach (var book in books)
+                    {
+                        Console.WriteLine($"Title: {book.Title}\nAuthor Name: {book.AuthorName}\nISBN: {book.ISBN}");
+                        Console.WriteLine("-----------------------------------------------------------");
+                    }
+
+                    Console.WriteLine();
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    Console.WriteLine("Book list is empty. Please add new book.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                }
+
+                break;
+            }
         case "3":
             break;
         case "4":
