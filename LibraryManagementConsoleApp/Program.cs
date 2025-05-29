@@ -1,6 +1,7 @@
 ﻿using LibraryManagementConsoleApp.Models;
 
 List<Book> books = new();
+List<Member> members = new();
 
 while (true)
 {
@@ -60,7 +61,83 @@ while (true)
                 break;
             }
         case "3":
-            break;
+            {
+                Console.Clear();
+                Console.WriteLine("Please Enter the member information: ");
+                Console.WriteLine("-----------------------------------------------------------");
+                Console.WriteLine();
+
+                Console.Write("Name: ");
+                string name = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(name))
+                {
+                    Console.WriteLine("Name is required.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                Console.Write("Family: ");
+                string family = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(family))
+                {
+                    Console.WriteLine("Family is required.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                Console.Write("National Code: ");
+                string code = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(code))
+                {
+                    Console.WriteLine("National Code is required.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                if (!string.IsNullOrEmpty(code) && code.Length != 10)
+                {
+                    Console.WriteLine("National Code is invalid.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(family) && !string.IsNullOrEmpty(code))
+                {
+                    if (members.Any(m => m.Name == name && m.Family == family && m.NationalCode == code))
+                    {
+                        Console.WriteLine("The member is already exists.");
+                        Console.Write("Press any key back to options...");
+                        Console.ReadKey();
+                        continue;
+                    }
+                    else
+                    {
+                        members.Add(new Member
+                        {
+                            Id = members.Count + 1,
+                            Name = name,
+                            Family = family,
+                            NationalCode = code
+                        });
+
+                        Console.WriteLine();
+                        Console.WriteLine("member added.");
+                        Console.WriteLine("-----------------------------------------------------------");
+                        Console.WriteLine();
+                    }
+                }
+
+                Console.Write("Press any key back to options...");
+                Console.ReadKey();
+                break;
+            }
         case "4":
             {
                 Console.Clear();
@@ -95,7 +172,7 @@ while (true)
 
                 if (string.IsNullOrEmpty(isbn))
                 {
-                    Console.WriteLine("Press any key back to options...");
+                    Console.WriteLine("ISBN is required.");
                     Console.Write("Press any key back to options...");
                     Console.ReadKey();
                     continue;
