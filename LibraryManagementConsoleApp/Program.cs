@@ -31,7 +31,33 @@ while (true)
     switch (option)
     {
         case "1":
-            break;
+            {
+                Console.Clear();
+                Console.WriteLine("Member list: ");
+                Console.WriteLine("-----------------------------------------------------------");
+                Console.WriteLine();
+
+                if (members.Count > 0)
+                {
+                    foreach (var member in members)
+                    {
+                        Console.WriteLine($"Name: {member.Name}\nFamily: {member.Family}\nNational Code: {member.NationalCode}");
+                        Console.WriteLine("-----------------------------------------------------------");
+                    }
+
+                    Console.WriteLine();
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    Console.WriteLine("Member list is empty. Please add new member.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                }
+
+                break;
+            }
         case "2":
             {
                 Console.Clear();
