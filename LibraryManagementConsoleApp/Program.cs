@@ -15,12 +15,12 @@ while (true)
 
     Console.WriteLine("------------------- Application options -------------------");
     Console.WriteLine();
-    Console.WriteLine("1. Member List");
-    Console.WriteLine("2. Book List");
-    Console.WriteLine("3. Add new member");
-    Console.WriteLine("4. Add new book");
-    Console.WriteLine("5. Borrow book");
-    Console.WriteLine("6. Return book");
+    Console.WriteLine("1. Add new member");
+    Console.WriteLine("2. Add new book");
+    Console.WriteLine("3. Borrow book");
+    Console.WriteLine("4. Return book");
+    Console.WriteLine("5. Member List");
+    Console.WriteLine("6. Book List");
     Console.WriteLine("7. Exit");
     Console.WriteLine();
     Console.WriteLine("-----------------------------------------------------------");
