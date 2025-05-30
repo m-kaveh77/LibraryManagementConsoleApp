@@ -31,3 +31,4 @@ This application is designed to provide a basic yet functional system for managi
    ```bash
    git clone https://github.com/m-kaveh77/LibraryManagementConsoleApp.git
    cd LibraryManagementConsoleApp
+   dotnet run
