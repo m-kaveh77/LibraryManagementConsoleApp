@@ -2,6 +2,7 @@
 
 List<Book> books = new();
 List<Member> members = new();
+List<BorrowBook> borrowBooks = new();
 
 while (true)
 {
@@ -235,7 +236,123 @@ while (true)
                 break;
             }
         case "5":
-            break;
+            {
+                Console.Clear();
+                Console.WriteLine("Borrow Book: ");
+                Console.WriteLine("-----------------------------------------------------------");
+
+                if (books.Count == 0)
+                {
+                    Console.WriteLine("Book list is empty. Please add new book.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                if (members.Count == 0)
+                {
+                    Console.WriteLine("Member list is empty. Please add new member.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                foreach (var book in books)
+                {
+                    Console.Write($"Book list: {book.Title} | ");
+                }
+
+                Console.WriteLine();
+
+                foreach (var member in members)
+                {
+                    Console.Write($"Member list: {member.Name} {member.Family} | ");
+                }
+
+                Console.WriteLine();
+
+                Console.WriteLine("Please enter book title and member name to borrowing book.");
+                Console.WriteLine();
+
+                Console.Write("Book title: ");
+                var bookTitle = Console.ReadLine();
+
+                var isExistsBookTitle = books.Any(b => b.Title == bookTitle);
+
+                if (!isExistsBookTitle)
+                {
+                    Console.WriteLine("The book name in not exists in book list.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                var isBorrowedBook = borrowBooks.Exists(b => b.BookTitle == bookTitle && b.ReturnDate == null);
+
+                if (isBorrowedBook)
+                {
+                    Console.WriteLine("The book already borrowed.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                Console.Write("Member name: ");
+                var memberName = Console.ReadLine();
+
+                var isExistsMemberName = members.Any(m => m.Name == memberName);
+
+                if (!isExistsMemberName)
+                {
+                    Console.WriteLine("The member name in not exists in member list.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                Console.Write("Member family: ");
+                var memberFamily = Console.ReadLine();
+
+                var isExistsMemberFamily = members.Any(m => m.Family == memberFamily);
+
+                if (!isExistsMemberFamily)
+                {
+                    Console.WriteLine("The member family in not exists in member list.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                var isBookBorrowed = borrowBooks.Exists(b => b.BookTitle == bookTitle);
+
+                if (isBookBorrowed)
+                {
+                    Console.WriteLine("The book is already borrowed.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+                else
+                {
+                    borrowBooks.Add(new BorrowBook
+                    {
+                        Id = borrowBooks.Count + 1,
+                        BookTitle = bookTitle,
+                        MemberName = memberName,
+                        MemberFamily = memberFamily,
+                        BorrowDate = DateTime.Now.Date
+                    });
+
+                    Console.WriteLine();
+                    Console.WriteLine("Borrow book successfully");
+                    Console.WriteLine("-----------------------------------------------------------");
+                    Console.WriteLine();
+                }
+
+                Console.Write("Press any key back to options...");
+                Console.ReadKey();
+                break;
+            }
         case "6":
             break;
         case "7":
