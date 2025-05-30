@@ -354,13 +354,59 @@ while (true)
                 break;
             }
         case "6":
-            break;
+            {
+                Console.Clear();
+                Console.WriteLine("Return Book: ");
+                Console.WriteLine("-----------------------------------------------------------");
+
+                if(borrowBooks.Count == 0)
+                {
+                    Console.WriteLine("There is not any books to return");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                Console.Write("Book title: ");
+                var bookTitle = Console.ReadLine();
+
+                Console.Write("Member name: ");
+                var memberName = Console.ReadLine();
+
+                Console.Write("Member family: ");
+                var memberFamily = Console.ReadLine();
+
+                var isExistsBook = borrowBooks.Any(b => b.BookTitle == bookTitle && b.MemberName == memberName && b.MemberFamily == memberFamily && b.ReturnDate == null);
+
+                if (isExistsBook)
+                {
+                    var book = borrowBooks.Where(b => b.BookTitle == bookTitle && b.MemberName == memberName && b.MemberFamily == memberFamily && b.ReturnDate == null).Single();
+
+                    book.ReturnDate = DateTime.Now.Date;
+
+                    Console.WriteLine();
+                    Console.WriteLine("Return book successfully");
+                    Console.WriteLine("-----------------------------------------------------------");
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("The book name in not exists in borrow book list.");
+                    Console.Write("Press any key back to options...");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                Console.Write("Press any key back to options...");
+                Console.ReadKey();
+                break;
+            }
         case "7":
             {
                 Console.Clear();
                 Console.WriteLine("Good Luck! Bye");
                 Console.WriteLine("-----------------------------------------------------------");
-                
+
                 return;
             }
         default:
